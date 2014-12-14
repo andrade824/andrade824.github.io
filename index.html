@@ -34,30 +34,36 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="#top">
                         Projects and Tinkerings
                     </a>
                 </li>
+				<li>
+					<a href="#futureprojects">Future Projects</a>
+				</li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="#fear">Fear Tracker</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="#pacman">Pacman on LED Matrix</a>
+                </li>
+				<li>
+					<a href="#linux">Linux Systems Programming</a>
+				</li>
+                <li>
+                    <a href="#spi">Verilog SPI Master</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="#homebrew">Homebrew Video Games</a>
                 </li>
+				<li>
+					<a href="#pwm">Pulse Width Modulation IP</a>
+				</li>
+				<li>
+					<a href="#vga">VGA Controller IP</a>
+				</li>
                 <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="#cpld">Custom CPLD Dev Board</a>
                 </li>
             </ul>
         </div>
@@ -68,12 +74,210 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+						<a name="top"></a>
                         <h1>Devon's Personal Projects and Tinkerings</h1>
-						<p>Since I try to keep my resume and applications as short as possible (to make it easier to skim through) I tend to not have very much room to talk about the projects I work on in my spare time. To remedy that problem, I’ve created this website as an always updated source for the things I’ve worked on and am currently spending my time tinkering with.</p>
-						<p>If you have any questions or comments about the projects in this website, don’t hesitate to contact me at <a href="mailto:devon.andrade@oit.edu">devon.andrade@oit.edu</a> (trust me, I love talking about this stuff!).
+						<p>Since I try to keep my resume and applications as short as possible (to make it easier to skim through) I tend to not have very much room to talk about the projects I work on in my spare time. To remedy that problem, I've created this website as an always updated source for the things I've worked on and am currently spending my time tinkering with.</p>
+						<p>If you have any questions or comments about the projects in this website, don't hesitate to contact me at <a href="mailto:devon.andrade@oit.edu">devon.andrade@oit.edu</a> (trust me, I love talking about this stuff!).
+						<p>To quickly jump to any project, use the links in the sidebar to the left.</p>
+						
+						<h2>GitHub Link</h2>
+						<p>For quick access to all of the code for my projects, please visit my GitHub page at <a href="https://github.com/andrade824">https://github.com/andrade824</a></p>
+						
+						<a name="futureprojects"></a>
+                        <h2>Future Project Ideas and Plans</h2>
+							<p>Like any good engineer, I always like to have a project or two in the pipeline (not unlike a 4-stage superscalar pipeline with advanced branch detection and out-of-order execution, but I digress). These are the projects I'm curently doing research for or have only written some demo code for currently, but are going to become a big part of my life soon enough.</p>
+							<h3>16-bit Video Game Console</h3>
+							<p>Ever since high school I've had the dream of trying to build my own video game console, and after four years of studying, I think I now have the skills to actually make one. What makes this project so enticing is that it utilizes the full stack of hardware and software: building custom graphics hardware in an FPGA, writing linux drivers to interface with hardware, and building user-space libraries to make game development easier.</p>
+							<h4>Hardware</h4>
+							<p>Using the Xilinx Zynq-7000 programmable SoC platform (a <a href="http://digilentinc.com/Products/Detail.cfm?Prod=ZYBO">ZYBO dev board</a> to be precise) I want to build the custom graphics hardware to display images out at a crisp 16-bit 640x480 resolution. My plan is to model the hardware side of the project (built in the programmable logic subsystem in the Zynq) after the <a href="http://en.wikipedia.org/wiki/Picture_Processing_Unit">Picture Processing Unit (PPU)</a> found in the Super Nintendo Entertainment System. I'm also toying with the idea having a "framebuffer mode" which would allow for writing a framebuffer driver in the software side to display images when not in-game (kind of like a HUD overlay found in many consoles today).</p>
+							<h4>Software</h4>
+							<p>On the software side of things, I want to run an embedded linux distibution (<a href="http://www.xilinx.com/tools/petalinux-sdk.htm">Petalinux</a>) with a custom driver to interface with my graphics hardware. If I decide to implement the aforementioned framebuffer mode, I can build a linux framebuffer driver to take advantage of that hardware. What's nice about this is that there's a lot of software and libraries out there that already take advantage of framebuffer drivers, possibly making it easier to develop games. Once low-level access via a driver is established, I'll need to start work on a user-space library to make it easier to interface with the hardware and to make game development smoother.</p>
+							<h4>What's already done</h4>
+							<p>I've spent a considerable amount of time in the last few months teaching myself how to use the Xilinx Zynq-7000 SoC along with all of the tools needed to use it (primarily Xilinx Vivado and the Xilinx SDK). I've already built some smaller IPs that work towards my efforts with this project. I've also fallen in love with Linux and building embedded linux systems. Those efforts will prove to be quite useful when working on the software side of this project</p>
+							Side projects that work towards this one:
+							<ul>
+								<li><a href="#vga">VGA Controller IP</a>: I built a Zynq IP Core to output video information over the onboard VGA connector. I made it flexible enough to work with any resolution (all you need to do is change the pixel clock speed in the clock generator and change some timing parameters). This will need to be modified later on to read the framebuffer out of DDR3 memory.</li>
+								<li><a href="#linux">Linux Systems Programming</a>: Having been a linux desktop user for more than two years now, it was a pretty natural progression moving into systems programming on linux. I started out learning about threading and sockets, and then moved onto kernel module development and building device drivers. I haven't uploaded any of my driver code yet (still a work in progress), but I've been reading <a href="http://lwn.net/Kernel/LDD3/">LDD3</a> and the kernel documentation as my guides so far.
+							</ul>
+						<hr />
+						<a name="fear"></a>
+						<h2>Fear Tracker</h2>
+						<h4>A hardware/software package to track how scared a person is</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/Fear-Tracker">https://github.com/andrade824/Fear-Tracker</a></h4>
+						<p>Students at my school during their third year have to work in teams to build a project over the course of the school year (called a "Junior Project"). My team is working towards a device that--via a multitude of sensors such as a heart rate sensor, accelerometer, and galvanic skin response (GSR) sensor--will track just how scared a person is and graph the data in real time on a computer.</p>
+						<p>This device would be marketed towards horror game developers, horror movie makers, livestreamers (people who stream videos of themselves playing games) of horror games. For content creators (game developers and movie makers) this device would provide a mechanism for quantizing just how scared their viewers are while they play/watch their game/movie. The data that was collected could then be reviewed in the context of gameplay at a later point in time to find out where their content exceeds in being scary and where it fails. This could also be used by livestreamers to show their audience just how scared they actually are while playing a horror game. This can help deepen the immersion an audience member has with the person streaming the video.</p>
+						<p>This project contains three separate parts to it (each with their own sub-modules): the wristboard, the processing hub, and the software. The wristboard is, as the name suggests, a device that is strapped on your wrist that grabs the information from our sensors and wirelessly transmits it to the processing hub with as minimal latency as possible. We're using an Atmega328p as the microcontroller for the wristboard because of it's small size, minimal cost, and simplicity. Attached to this wristboard, are a pulse sensor (heartrate sensor), sweat sensor, an accelerometer (to detect jump scares) and a bluetooth module to let it talk to the processing hub.</p>
+						<p>The second part of the project is the processing hub. The processing hub receives the information coming from the wristboard over bluetooth, processes it and sends the useful information along to the PC. This means it determines the heart rate, number of jump scares, and sweat level from the wristboard's raw data before passing it onto the software. The processing hub is being built around the TI Tiva C micrcontroller (based on the ARM Cortex-M4 architecture).</p>
+						<p>The last component of the Fear Tracker is the real time stat-tracking software. This is a piece of computer software that grabs data from a processing hub connected to the computer via USB, and displays a graph of the information as it comes in. The software also allows saving and loading of this information so the content creator can view the data at a later time and determine what they should change in their product to make it scarier. Additional features of the software could include calibrating the sensitivity of each sensor and allowing for multiple sessions to be overlaid in one screen (so the content creator could view the progression of scariness over time). This software is being written using the QT Framework to allow for easy building of a cross-platform GUI (both Windows and Linux are the current primary targets, with Mac suppport later if time gives).</p>
+						<h3>Our Progress</h3>
+						<p>The designing and planning for this project is completely finished as well as the beginning of the firmware for the wristboard and the software for the PC. We have written firmware for the Atmega328p to grab sensor information from the built-in Analog-to-Digital converter as well as sending it over UART for further processing. We've also started work on the PC software (written in the QT Framework) to display the information sent over from the wristboard. With this code, we've developed a demonstration that displays the heartrate data coming from the wristboard to create something like a homemade EKG machine.</p>
+						<img src="img/heartrate.png" width="700px"/>
+						
+						<hr />
+						<a name="pacman"></a>
+						<h2>Pacman on LED Matrix</h2>
+						<h4>A simple Pacman game running on a 32x32 RGB LED Matrix</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/Pacman-Game-on-LED-Matrix">https://github.com/andrade824/Pacman-Game-on-LED-Matrix</a></h4>
+						
+						<p>The LED Matrix is the <a href="https://www.sparkfun.com/products/12584">RGB LED Panel from sparkfun</a> and is driven fast enough to be able to display 7-bits of color information per color (R, G, and B).</p>
 
-                        <h2>Project Ideas and Plans</h2>
-						<p>Like any good engineer, I always like to have a project or two in the pipeline. These are the projects I'm curently doing research for or have only written some demo code for currently, but are going to become a big part of my life soon enough.</p>
+						<p>The microcontroller used to drive the LED matrix is a <a href="http://www.ti.com/tool/ek-tm4c123gxl">TI Tiva C launchpad board</a> containing a TM4C123GH6PM chip. This chip can run up to 80MHz which is enough to drive the matrix as well as perform game logic.</p>
+
+						<p>Currently, the Pacman character is controlled over the UART. You can either connect it to your computer through a USB to UART converter, or by attaching a bluetooth wireless UART (like any common HC-05 module) and connect to your computer over bluetooth. You move around using the "w", "a", "s", and "d" characters. "w" is up, "a" is left, "s" is down, and "d" is right. Your goal, as in the original pacman game, is to collect as many pellets as you can before a ghost catches you.</p>
+
+						<p>To understand how the display is driven to show hundreds of different colors as well as to see the source code go to the GitHub repository at <a href="https://github.com/andrade824/Pacman-Game-on-LED-Matrix">https://github.com/andrade824/Pacman-Game-on-LED-Matrix</a></p>
+						
+						<div class="col-lg-4">
+							<img src="img/ledmatrix.jpg" width="400px" />
+							<p class="text-center">Early demonstration of the working LED Matrix</p>
+						</div>
+						<div class="col-lg-4">
+							<img src="img/pacman.jpg" width="400px" />
+							<p class="text-center">Beginning of the Pacman map and the Pacman character (the yellow dot)</p>
+						</div>
+						
+						<div class="clearfix"></div>
+						
+						<hr />
+						<a name="linux"></a>
+						<h2>Linux Systems Programming</h2>
+						<h4>My foray into Linux systems and kernel programming</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/Linux-Systems-Programming">https://github.com/andrade824/Linux-Systems-Programming</a></h4>
+						<p>Over the past few months I've been teaching myself the ins and outs of Linux systems programming, developing kernel modules, and building embedded linux systems. On the systems programming side, I've uploaded a couple of my learning projects so that they may help others when they start programming in Linux:</p>
+						<ul>
+							<li><strong>Server based calculator:</strong> Using both sockets and child processes I've created a client-server calculator of sorts. Essentially, you run the "Client" on one computer/terminal, and the "Server" on another. On the client, you can input mathematical expressions (like "2+2"), the expression will be sent to the server via sockets, the expression will be processed, then the result will be sent back to the client for viewing.</li>
+							<li><strong>Threads Example:</strong> This is just some example code for working with threads. It shows the basics needed to make multithreaded applications on linux (creating and starting threads, and killing/waiting for them to complete. </li>
+						</ul>
+						<p>When it comes to embedded Linux, most of my efforts have been targeted at getting custom kernels and distributions built and running on the BeagleBone Black and the Xilinx Zynq-7000 platforms. It's honestly quite fascinating learning how a computer (even an embedded one) boots up and gets running from the ground up. Embedded linux is basically the perfect opportunity to learn more about desktop computers because it encapsulates a lot of the fundamentals of a modern computer, in a much smaller, easier to learn package. I feel like I've learned more about how computers and operating systems work in the first two weeks of learning about embedded linux, than in the operating systems course I took (although, it wasn't useless by far).</p>
+						<p>To go along with learning about embedded linux and programming in linux, I've naturally been teaching myself the basics of Linux kernel development and developing device drivers for linux. I'm currently working through Linux Device Drivers 3rd Edition and the kernel documentation as my guides for learning. My end hope is to be able to develop drivers for the hardware on the embedded systems I'm creating (especially building drivers for my own custom hardware built into the Zynq-7000 programmable SoC).</p>
+						<p>Keep an eye on the repository linked to above for further updates into my Linux adventures</p>
+						<hr />
+						<a name="spi"></a>
+						<h2>Verilog SPI Master</h2>
+						<h4>A SPI Master IP written in verilog which is used to output characters entered on a keypad to a serial LCD screen</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/Verilog-SPI-Master">https://github.com/andrade824/Verilog-SPI-Master</a></h4>
+						<p>This project consists of a custom SPI Master IP which is used to communicate with the <a href="https://www.digilentinc.com/Products/Detail.cfm?NavPath=2,401,473&Prod=PMOD-CLS">PmodCLS</a> serial LCD screen (it supports I2C, SPI, and UART interfaces). This project also has a keypad scanner (the exact keypad used is the <a href="http://www.digilentinc.com/Products/Detail.cfm?Prod=PMODKYPD">Digilent PmodKYPD keypad</a>) that scans a keypad and outputs whatever key was pressed onto the LCD.</p>
+
+						<p>The following modules were used in this design:
+						<ul>
+							<li><strong>SPI_LCD:</strong> This is the top level module that ties the other modules together</li>
+							<ul>
+								<li><strong>keypad:</strong> This module contains the keypad scanning and control units</li>
+								<ul>
+									<li><strong>key_ctrl:</strong> State machine that controls the keypad scanning/latching and encoding</li>
+									<li><strong>key_scanner:</strong> Pulls each column signal low consecutively until a button is pressed (in which case it pulls the "ken" signal low)</li>
+									<li><strong>key_latch:</strong> This latches the data until it's ready to be shifted</li>
+									<li><strong>key_encoder:</strong> This converted the row and column outputs to a usable ascii value for the LCD display</li>
+								</ul>
+								<li><strong>synchronizer:</strong> This synchronizes the 1KHz data_ready signal to a 250KHz clock</li>
+								<li><strong>clk_div:</strong> This divides the 500KHz clock down to 1KHz and 250KHz respectively</li>
+								<li><strong>lcd_ctrl:</strong> This state machine controls whether to send data to the LCD, or the clear sequence (when the clear button is pressed)</li>
+								<li><strong>spi_master:</strong> Module responsible for sending data over SPI</li>
+								<ul>
+									<li><strong>spi_shift:</strong> SPI Shift register to hold incoming and outgoing data</li>
+									<li><strong>spi_ctrl:</strong> Controls when and what data is sent over SPI</li>
+								</ul>
+							</ul>
+						</ul>
+						</p>
+
+						<p>This project was designed to be used on the <a href="http://www.digilentinc.com/Products/Detail.cfm?NavPath=2,400,1000&Prod=CR2-STARTER">Digilent CoolRunner-II development board</a>, but should be able to be synthesized with most CPLDs (pinouts and other constraints will obviously change). The only other thing that will need to be changed is the fact that I'm using a built-in clock divider (specific to the CoolRunner-II chips) to divide down the clock by 16 before running it into my clock divider to further divide it. When you synthesize for your own chip, the clock divider module will need to be modified for whatever clock you'll be using.</p>
+						
+						<hr />
+						<a name="homebrew"></a>
+						<h2>Homebrew Video Games</h2>
+						<div class="pull-right">
+							<img src="img/nes.PNG" width="300px" />
+							<p class="text-center">The "Background" NES Demo</p>
+						</div>
+						<h4>Small homebrew demos made for the Nintendo Entertainment System and Nintendo DS</h4>
+						<h4>NES Source Code: <a href="https://github.com/andrade824/Homebrew-NES-Development">https://github.com/andrade824/Homebrew-NES-Development</a></h4>
+						<h4>NDS Source Code: <a href="https://github.com/andrade824/Homebrew-NDS-Development">https://github.com/andrade824/Homebrew-NDS-Development</a></h4>
+						
+						<p>During my sophomore year of college I really got into wanting to build my own video games. To this end, I taught myself 6502 Assembly and started learning how to program the Nintendo Entertainment System (yes, the console from 1985). I also wanted to try my hand at handheld video game programming so I learned how to make some basic Nintendo DS applications. Below, you'll find the fruits of my efforts.</p>
+						<h3>NES Homebrew</h3>
+						
+						<p>Small homebrew (handwritten in 6502 assembly) NES demos. Tested on both an emulator and an actual NES through a NES EverDrive.</p>
+
+						<p>Assembled with NESASM3.</p>
+
+						<p>Demo List:
+						<ul>
+						<li>Sprites - Displays a couple static sprites onto the screen</li>
+						<li>MultiSprite - Creates a mario character out of multiple sprites and lets you move the character around with the D-Pad</li>
+						<li>Background - Includes the mario character as before as well as utilizing multiple background tiles</li>
+						</ul>
+						</p>
+						<div class="pull-right">
+							<img src="img/nds.PNG" />
+							<p class="text-center">A simple NDS drawing application</p>
+						</div>
+						<p>If you want to try out the demos, you can play them in your favorite NES emulator (I personally prefer jnes).</p>
+						
+						<h3>NDS Homebrew</h3>
+						<p>Homebrew Nintendo DS demos developed in C for the ARM processor built into the Nintendo DS original and lite</p>
+						<p>Compiling and linking these demos requires the libnds library included in the devkitPro toolchain.</p>
+
+						<p>Demo List:
+						<ul>
+							<li>ColorTest - Displays red in the top screen by default. If you press and hold X, it displays blue. Hold A and it displays green</li>
+							<li>StarFieldDemo - Displays a horizontal scrolling starfield across the screen (randomly generated at runtime)</li>
+							<li>SimpleDraw - A basic drawing application. Use the A/Y/X buttons to change the color, and use the bottom screen to draw.</li>
+						</ul>
+						</p>
+						<p>You can run these demos in your favorite Nintendo DS emulator (my personal preference is DeSmuME).</p>
+						
+						<div class="clearfix"></div>
+						
+						<hr />
+						<a name="pwm"></a>
+						<h2>Pulse Width Modulation IP</h2>
+						<h4>A PWM IP core written in Verilog, along with a firmware (designed for the Xilinx Zynq-7000 SoC)</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/Pulse-Width-Modulation-IP">https://github.com/andrade824/Pulse-Width-Modulation-IP</a></h4>
+						<p>This IP Core contains both the HDL and firmware driver needed to realize a pulse width modulation module that's controllable from software. This IP uses the AXI bus to interface between the hardware and software components</p>
+						<h3>HDL</h3>
+						<p>In the HDL folder you'll find three files:
+						<ul>
+							<li>pwm_gen.v - The actual logic needed to create a PWM generator</li>
+							<li>PWM_Generator_v1_0_S_AXI.v - The auto-generated AXI wrapper for the PWM generator (at line 106 you can see the four registers used to control the PWM generator). At the bottom of that file you'll find where I hook up the registers to the PWM generator. This is needed because the Zynq-7000 chip lets the Processing system interact with the Programmable Logic system through an AXI interface. So, the AXI registers created in this file are mapped into the processor system's memory map for manipulation in software.</li>
+							<li>PWM_Generator_v1_0.v - The top level module instantiating and wiring up the PWM_Generator_v1_0_S_AXI (which in turn instantiates pwm_gen).</li>
+						</ul>
+						</p>
+						<p>There are three registers that control the operation of the PWM module:
+						<ul>
+						<li>load - The value at which the counter will reset to zero and set the output</li>
+						<li>compare - The value at which the counter will clear the output</li>
+						<li>control - Bit 0: PWM Enable - Output is enabled if this bit is high, disabled otherwise</li>
+						</ul>
+						</p>
+
+						<p>The PWM module will continuously count up to the "load" value and once it reaches the load value, will loop back to zero. When the counter is at zero, the output is set high. When the PWM module reaches the "compare" value, it clears the output. So the "high" width of the output signal is exactly "compare" clock ticks long (the clock is whatever clock you connect to the IP in your block design, but it will most likely be generated by the Zynq Processing System). The "low" width of the output signal is exactly "load" - "compare" clock ticks long. If you disable the PWM module (by setting bit zero of the control register to zero) then the output will always be low.</p>
+
+						<p>In other words, the "load" register determines your period, while the "compare" register determines your duty cycle.</p>
+
+						<h3>Driver</h3>
+						<p>The "PWM_Generator.h" header file contains helpful macros for manipulating the PWM registers while "main.c" gives an example of using those macros. This code would be used in a Xilinx SDK project created for a Zynq design that utilizes the PWM IP.</p>
+						<hr />
+						<a name="vga"></a>
+						<h2>VGA Controller IP</h2>
+						<h4>A VGA Controller IP written in Verilog to output pretty colors to a VGA monitor in glorious 640x480 resolution</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/VGA-Controller-IP">https://github.com/andrade824/VGA-Controller-IP</a></h4>
+						<p>This IP was developed for the Zynq-7000 series of Programmable SOCs although it could easily be translated to other programmable logic devices. This design is broken into three modules: the sync generator, the pixel logic, and the top-level design that hooks it all together. The sync generator produces the correct horizontal and vertical timings needed for a monitor/tv to know when to display colors. The pixel logic module takes in the horizontal and vertical counts from the sync generator (to know which pixel needs to be displayed) and outputs the color for that pixel.</p>
+						<p>For the full source code and breakdown of the verilog modules, check out the source code link above.</p>
+						<div class="col-lg-4">
+							<img src="img/vga.jpg" width="600px" />
+							<p class="text-center">Demonstration of the working VGA Controller</p>
+						</div>
+						
+						<div class="clearfix"></div>
+						
+						<hr />
+						<a name="cpld"></a>
+						<h2>Custom CPLD Development Board</h2>
+						<h4>Hand soldered and wire-wrapped Altera Max-7000 CPLD Dev Board</h4>
+						<p>One of my professors had a surplus of old Altera Max-7000 CPLDs lying around and I--never one to miss a golden learning opportunity--decided to build a development board around the chip for future projects. I started with designing a board schematic in OrCad, and then I started laying out the components on a piece of perf board (also called Veroboard). I decided to put in two sets of 8 DIP switches, a 3-digit Muxed 7-Seg display, a Bar LED Display, and a whole host of LEDs. Afterwards I soldered the components onto the board, wire-wrapped the components together, and tested the board using a multimeter, logic probe and function generator until I was satisfied it worked correctly.</p>
+						<p>I then went on to use this board during my programmable logic design course and ended up creating both a traffic light controller (using the LEDs and switches on the board) as well as an elevator controller (the Muxed 7-seg display showed the floor number, and the Bar LED display showed a graphical view of the door opening and closing).</p>
+						<p><em>Pictures coming soon</em></p>
                     </div>
                 </div>
             </div>
