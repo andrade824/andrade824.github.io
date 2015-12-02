@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website that contains links and descriptions to my personal projects">
+    <meta name="author" content="Devon Andrade">
+
+    <title>Homebrew Video Games</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Projects and Tinkerings
+                    </a>
+                </li>
+				<li>
+					<a href="seniorproject.html">2D Graphics Accelerator IP</a>
+				</li>
+                <li>
+                    <a href="feartracker.html">Fear Tracker</a>
+                </li>
+				<li>
+					<a href="musicplayer.html">Custom Music Player</a>
+				</li>
+				<li>
+					<a href="embeddedlinux.html">Embedded Linux Beginner's Guide</a>
+				</li>
+                <li>
+                    <a href="pacman.html">Pacman on LED Matrix</a>
+                </li>
+				<li>
+					<a href="linuxsystems.html">Linux Systems Programming</a>
+				</li>
+                <li>
+                    <a href="verilog_spi.html">Verilog SPI Master</a>
+                </li>
+                <li>
+                    <a href="homebrew.html">Homebrew Video Games</a>
+                </li>
+				<li>
+					<a href="pwm.html">Pulse Width Modulation IP</a>
+				</li>
+                <li>
+                    <a href="cpld.html">Custom CPLD Dev Board</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+						<h2>Homebrew Video Games</h2>
+						<div class="pull-right">
+							<img src="img/nes.PNG" width="300px" />
+							<p class="text-center">The "Background" NES Demo</p>
+						</div>
+						<h4>Small homebrew demos made for the Nintendo Entertainment System and Nintendo DS</h4>
+						<h4>NES Source Code: <a href="https://github.com/andrade824/Homebrew-NES-Development" target="_blank">https://github.com/andrade824/Homebrew-NES-Development</a></h4>
+						<h4>NDS Source Code: <a href="https://github.com/andrade824/Homebrew-NDS-Development" target="_blank">https://github.com/andrade824/Homebrew-NDS-Development</a></h4>
+						
+						<p>During my sophomore year of college I really got into wanting to build my own video games. To this end, I taught myself 6502 Assembly and started learning how to program the Nintendo Entertainment System (yes, the console from 1985). I also wanted to try my hand at handheld video game programming so I learned how to make some basic Nintendo DS applications. Below, you'll find the fruits of my efforts.</p>
+						<h3>NES Homebrew</h3>
+						
+						<p>Small homebrew (handwritten in 6502 assembly) NES demos. Tested on both an emulator and an actual NES through a NES EverDrive.</p>
+
+						<p>Assembled with NESASM3.</p>
+
+						<p>Demo List:
+						<ul>
+						<li>Sprites - Displays a couple static sprites onto the screen</li>
+						<li>MultiSprite - Creates a mario character out of multiple sprites and lets you move the character around with the D-Pad</li>
+						<li>Background - Includes the mario character as before as well as utilizing multiple background tiles</li>
+						</ul>
+						</p>
+						<div class="pull-right">
+							<img src="img/nds.PNG" />
+							<p class="text-center">A simple NDS drawing application</p>
+						</div>
+						<p>If you want to try out the demos, you can play them in your favorite NES emulator (I personally prefer jnes).</p>
+						
+						<h3>NDS Homebrew</h3>
+						<p>Homebrew Nintendo DS demos developed in C for the ARM processor built into the Nintendo DS original and lite</p>
+						<p>Compiling and linking these demos requires the libnds library included in the devkitPro toolchain.</p>
+
+						<p>Demo List:
+						<ul>
+							<li>ColorTest - Displays red in the top screen by default. If you press and hold X, it displays blue. Hold A and it displays green</li>
+							<li>StarFieldDemo - Displays a horizontal scrolling starfield across the screen (randomly generated at runtime)</li>
+							<li>SimpleDraw - A basic drawing application. Use the A/Y/X buttons to change the color, and use the bottom screen to draw.</li>
+						</ul>
+						</p>
+						<p>You can run these demos in your favorite Nintendo DS emulator (my personal preference is DeSmuME).</p>
+						
+						<div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

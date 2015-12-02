@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website that contains links and descriptions to my personal projects">
+    <meta name="author" content="Devon Andrade">
+
+    <title>Client/Server Tic Tac Toe</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Projects and Tinkerings
+                    </a>
+                </li>
+				<li>
+					<a href="seniorproject.html">2D Graphics Accelerator IP</a>
+				</li>
+                <li>
+                    <a href="feartracker.html">Fear Tracker</a>
+                </li>
+				<li>
+					<a href="musicplayer.html">Custom Music Player</a>
+				</li>
+				<li>
+					<a href="embeddedlinux.html">Embedded Linux Beginner's Guide</a>
+				</li>
+                <li>
+                    <a href="pacman.html">Pacman on LED Matrix</a>
+                </li>
+				<li>
+					<a href="linuxsystems.html">Linux Systems Programming</a>
+				</li>
+                <li>
+                    <a href="verilog_spi.html">Verilog SPI Master</a>
+                </li>
+                <li>
+                    <a href="homebrew.html">Homebrew Video Games</a>
+                </li>
+				<li>
+					<a href="pwm.html">Pulse Width Modulation IP</a>
+				</li>
+                <li>
+                    <a href="cpld.html">Custom CPLD Dev Board</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+						<h2>Linux Client/Server Tic-Tac-Toe Game</h2>
+						<h4>Utilizes Linux threading and socket APIs to create a multiplayer game experience</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/Client-Server-Tic-Tac-Toe-Game" target="_blank">https://github.com/andrade824/Client-Server-Tic-Tac-Toe-Game</a></h4>
+						<p>This project consists of both client and server software to handle playing any number of Tic-Tac-Toe games simultaneously. This game was developed in C++ and utilized Linux sockets programming (TCP/IP) to provide for a networked gaming experience.</p>
+						
+						<p>Server</p>
+						<ul>
+							<li>Developed to handle multiple games at the same time</li>
+							<li>Kicks off a new thread for each client that connects</li>
+							<li>Linked list of games is used to keep track of which players are playing who</li>
+							<li>Mutexes provide inter-thread atomic data access</li>
+							<li>Object-oriented programming was utilized to keep track of tic-tac-toe boards, players, and games between players</li>
+						</ul>
+						
+						<p>Client</p>
+						<ul>
+							<li>Connects to the server over TCP/IP</li>
+							<li>Retrieves and validates user input</li>
+							<li>Displays results of each move in the console</li>
+						</ul>
+						<p>Very small memory footprint because the game logic is handled server-side</p>
+						
+						<div style="text-align:center" width="800px">
+							<img src="img/tictactoe.png" width="750px" />
+							<p class="text-center">Example game with two clients playing on a single server</p>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website that contains links and descriptions to my personal projects">
+    <meta name="author" content="Devon Andrade">
+
+    <title>Pacman on an LED Matrix</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Projects and Tinkerings
+                    </a>
+                </li>
+				<li>
+					<a href="seniorproject.html">2D Graphics Accelerator IP</a>
+				</li>
+                <li>
+                    <a href="feartracker.html">Fear Tracker</a>
+                </li>
+				<li>
+					<a href="musicplayer.html">Custom Music Player</a>
+				</li>
+				<li>
+					<a href="embeddedlinux.html">Embedded Linux Beginner's Guide</a>
+				</li>
+                <li>
+                    <a href="pacman.html">Pacman on LED Matrix</a>
+                </li>
+				<li>
+					<a href="linuxsystems.html">Linux Systems Programming</a>
+				</li>
+                <li>
+                    <a href="verilog_spi.html">Verilog SPI Master</a>
+                </li>
+                <li>
+                    <a href="homebrew.html">Homebrew Video Games</a>
+                </li>
+				<li>
+					<a href="pwm.html">Pulse Width Modulation IP</a>
+				</li>
+                <li>
+                    <a href="cpld.html">Custom CPLD Dev Board</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+						<h2>Pacman on LED Matrix</h2>
+						<h4>A simple Pacman game running on a 32x32 RGB LED Matrix</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/Pacman-Game-on-LED-Matrix" target="_blank">https://github.com/andrade824/Pacman-Game-on-LED-Matrix</a></h4>
+						
+						<p>This project is exactly what it sounds like: a fully-runnable Pacman game on a large LED matrix. The 32x32 LED matrix is being driven by a TI Tiva C Launchpad (ARM Cortex-M4) board over a parallel bus. The display doesn’t have any method of displaying more than red, green, and blue colors by default. To get around this limitation, a binary-coded modulation algorithm was implemented to display up to 7-bits of color information for each of the red, green, and blue channels (over 2,097,152 colors total). To learn more about how that algorithm works and to view the source code, visit the GitHub page linked to above.</p>
+
+						<strong>Features</strong>
+						<ul>
+							<li>Uses a TI Tiva C Launchpad (ARM Cortex-M4) with firmware written in TI Code Composer</li>
+							<li>Fully interrupt-driven LED Matrix driver code</li>
+							<li>7-bits of depth for each color channel (providing over 2,097,152 color combinations)</li>
+							<li>Screen refreshing at a constant 100Hz (eliminating flicker and screen tearing)</li>
+							<li>Simple drawing library implemented for displaying lines, pixels, and “maps” (arrays of pixels)</li>
+							<li>Controllable over Bluetooth from an Android smartphone (using a Bluetooth terminal app)</li>
+							<li>New maps can easily be created by modifying a couple of arrays (stored in flash)</li>
+							<li>Trivial to implement other games (like snake or space invaders) with the available drawing functions</li>
+						</ul>
+						
+						<h3>Implementation Details</h3>
+						<p>The LED Matrix is the <a href="https://www.sparkfun.com/products/12584" target="_blank">RGB LED Panel from sparkfun</a> and is driven fast enough to be able to display 7-bits of color information per color (R, G, and B).</p>
+
+						<p>The microcontroller used to drive the LED matrix is a <a href="http://www.ti.com/tool/ek-tm4c123gxl" target="_blank">TI Tiva C launchpad board</a> containing a TM4C123GH6PM chip. This chip can run up to 80MHz which is enough to drive the matrix as well as perform game logic.</p>
+
+						<p>Currently, the Pacman character is controlled over the UART. You can either connect it to your computer through a USB to UART converter, or by attaching a bluetooth wireless UART (like any common HC-05 module) and connect to your computer over bluetooth. You move around using the "w", "a", "s", and "d" characters. "w" is up, "a" is left, "s" is down, and "d" is right. Your goal, as in the original pacman game, is to collect as many pellets as you can before a ghost catches you.</p>
+
+						<p>To understand how the display is driven to show hundreds of different colors as well as to see the source code go to the GitHub repository at <a href="https://github.com/andrade824/Pacman-Game-on-LED-Matrix" target="_blank">https://github.com/andrade824/Pacman-Game-on-LED-Matrix</a></p>
+						
+						<div style="text-align:center" width="800px">
+							<img src="img/ledmatrix.jpg" width="700px"/>
+							<p class="text-center">Early demonstration of the working LED Matrix</p>
+						</div>
+						
+						<div style="text-align:center;margin-top:30px;" width="800px">
+							<img src="img/pacman.jpg" width="700px"/>
+							<p class="text-center">Beginning of the Pacman map and the Pacman character (the yellow dot)</p>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

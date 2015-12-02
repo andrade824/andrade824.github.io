@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website that contains links and descriptions to my personal projects">
+    <meta name="author" content="Devon Andrade">
+
+    <title>Beginner's Guide to Embedded Linux</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Projects and Tinkerings
+                    </a>
+                </li>
+				<li>
+					<a href="seniorproject.html">2D Graphics Accelerator IP</a>
+				</li>
+                <li>
+                    <a href="feartracker.html">Fear Tracker</a>
+                </li>
+				<li>
+					<a href="musicplayer.html">Custom Music Player</a>
+				</li>
+				<li>
+					<a href="embeddedlinux.html">Embedded Linux Beginner's Guide</a>
+				</li>
+                <li>
+                    <a href="pacman.html">Pacman on LED Matrix</a>
+                </li>
+				<li>
+					<a href="linuxsystems.html">Linux Systems Programming</a>
+				</li>
+                <li>
+                    <a href="verilog_spi.html">Verilog SPI Master</a>
+                </li>
+                <li>
+                    <a href="homebrew.html">Homebrew Video Games</a>
+                </li>
+				<li>
+					<a href="pwm.html">Pulse Width Modulation IP</a>
+				</li>
+                <li>
+                    <a href="cpld.html">Custom CPLD Dev Board</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+						<h2>Beginner's Guide to Embedded Linux on Altera SoC's</h2>
+						<h4>A guide that walks users through every step of creating a simple Embedded Linux distro from hand</h4>
+						<h4>Status: Will be posted to <a href="http://rocketboards.org" target="_blank">Rocketboards.org</a> (Altera's open-source community) after it's done being peer reviewed </h4>
+						<p>Going from a basic hardware design to creating a complete Embedded Linux distribution with custom drivers and applications is a difficult process with a high-learning curve. To help get our customers up to speed quickly, I developed a beginner&rsquo;s guide to Embedded Linux using Altera programmable SoCs. Once the guide is done being peer reviewed by engineers at Altera, it will be posted onto Rocketboards.org (Altera&rsquo;s Open Source community portal). This guide walks the user step-by-step through the following Embedded Linux topics:</p>
+						<ul>
+							<li>Building a simple hardware design using the Altera Design Suite (Quartus/Qsys)</li>
+							<li>Understanding core Embedded Linux concepts and boot flow</li>
+							<li>Generating a preloader (first stage bootloader)</li>
+							<li>Configuring and compiling U-Boot (second stage bootloader)</li>
+							<li>Generating and compiling the device tree</li>
+							<li>Configuring and compiling the Linux Kernel for a Cyclone V SoC device</li>
+							<li>Generating a root filesystem (containing BusyBox) using Buildroot</li>
+							<li>Creating an SD Card image and testing the design</li>
+							<li>Creating a user-space software application that utilizes the programmable logic hardware</li>
+							<li>Creating a kernel-space device driver for hardware modules residing in the FPGA</li>
+						</ul>
+						
+						<div style="text-align:center" width="800px">
+							<img src="img/embeddedlinux.jpg" width="750px" />
+							<p class="text-center">The boot-up and login sequence for the Embedded Linux distro (left) and all of the LEDs enabled via the kernel-space driver (right)</p>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

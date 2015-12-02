@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website that contains links and descriptions to my personal projects">
+    <meta name="author" content="Devon Andrade">
+
+    <title>Custom Music Player</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Projects and Tinkerings
+                    </a>
+                </li>
+				<li>
+					<a href="seniorproject.html">2D Graphics Accelerator IP</a>
+				</li>
+                <li>
+                    <a href="feartracker.html">Fear Tracker</a>
+                </li>
+				<li>
+					<a href="musicplayer.html">Custom Music Player</a>
+				</li>
+				<li>
+					<a href="embeddedlinux.html">Embedded Linux Beginner's Guide</a>
+				</li>
+                <li>
+                    <a href="pacman.html">Pacman on LED Matrix</a>
+                </li>
+				<li>
+					<a href="linuxsystems.html">Linux Systems Programming</a>
+				</li>
+                <li>
+                    <a href="verilog_spi.html">Verilog SPI Master</a>
+                </li>
+                <li>
+                    <a href="homebrew.html">Homebrew Video Games</a>
+                </li>
+				<li>
+					<a href="pwm.html">Pulse Width Modulation IP</a>
+				</li>
+                <li>
+                    <a href="cpld.html">Custom CPLD Dev Board</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+						<h2>NoiseBlaster 32</h2>
+						<h4>A custom music player that utilizes the PIC32MX microcontroller and a TI headphone amp/DAC to play up to 512 WAV files from an SD Card</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/NoiseBlaster32" target="_blank">https://github.com/andrade824/NoiseBlaster32</a></h4>
+						
+						<p>The NoiseBlaster was developed as a joint project between <a href="https://www.linkedin.com/in/alex-lao-6b444766" target="_blank">Alex Lao</a> and myself during our free time after work while interning at Altera. Our goal was to design a music player from the ground up: from PCB design to firmware. In the span of only a month, we were able to accomplish this goal. The final product can play up to 512 audio files stored on an SD Card and has next/previous, play/pause, and volume up/down controls.</p>
+						
+						<h3>Hardware Design</h3>
+						<p>The PCB was designed using Altium Designer. We chose to use the PIC32MX270 because it contains an audio I2S (inter-inter sound) interface, was available in an easy-to-solder SOIC package, and we both had previous experience with the PIC32MX microcontroller series. To handle audio output, we chose the TI TLV320DAC23 for both digital to analog conversion and headphone amplification. This chip takes in audio data over I2S and outputs the amplified analog audio signals. It also contains an I2C interface for control purposes (changing volume and initialization). Special care was taken to minimize the noise on the audio lines in terms of the PCB design (carefully placed capacitors and ground fills).</p>
+						
+						<p>To make this design as portable as possible, we also designed in a LiPo battery charging circuit (with a micro-USB port for charging and power purposes). A reset circuit is also included to make sure the components on the board don't get damaged or operate in a battery under-voltage situation.</p>
+						
+						<h3>Firmware Design</h3>
+						<p>The firmware consists of reading WAV files off of a FAT formatted SD card, decoding the audio data, and sending the data to the DAC over I2S. It also initializes all of the hardware components on the board (DAC, SD card, etc.) and uses interrupt-driven I/O for the control buttons (next/previous, play/pause, and volume up/down controls).A layered approach was taken to creating the firmware. Instead of creating one large chunk of code that read from the SD card and decoded data, we wrote separate drivers for SPI, SD Card I/O, reading files from FAT, and decoding WAV audio. Each of these layers works with the layer above and below it to get data from SD Card to DAC. This allowed us to split the work and debug our code far more easily than if we took a monolithic approach.</p>
+						
+						<p>After stress testing how fast we could run the SPI signals to the SD Card, we found that we had more than enough bandwidth to play 16-bit WAV audio files recorded at a 44.1KHz sample rate. One of our biggest worries was that we wouldn't be able to read from the SD Card (and FAT filesystem in row) fast enough to play the audio data without skipping. When we created the drivers for the SD card and FAT filesystem, we designed everything around 512-byte chunks. This is because a single sector within the SD card is 512 bytes and it's far faster to read data on sector boundaries than not. We also utilized the DMA within the PIC32 to transfer data between the SPI and I2C modules without CPU intervention. That design coupled with designing our PCB so that we could run 20MHz SPI signals without any significant noise allowed us to play back audio at the standard sample rate of 44.1KHz.</p>
+						
+						<div style="text-align:center" width="800px">
+							<img src="img/pcbdesign.png" width="750px" />
+							<p class="text-center">The finished PCB design</p>
+						</div>
+						
+						<div style="text-align:center; margin-top:30px" width="800px">
+							<img src="img/noiseblaster.jpg" width="750px" />
+							<p class="text-center">The final hand-soldered board!</p>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

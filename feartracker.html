@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website that contains links and descriptions to my personal projects">
+    <meta name="author" content="Devon Andrade">
+
+    <title>Fear Tracker</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Projects and Tinkerings
+                    </a>
+                </li>
+				<li>
+					<a href="seniorproject.html">2D Graphics Accelerator IP</a>
+				</li>
+                <li>
+                    <a href="feartracker.html">Fear Tracker</a>
+                </li>
+				<li>
+					<a href="musicplayer.html">Custom Music Player</a>
+				</li>
+				<li>
+					<a href="embeddedlinux.html">Embedded Linux Beginner's Guide</a>
+				</li>
+                <li>
+                    <a href="pacman.html">Pacman on LED Matrix</a>
+                </li>
+				<li>
+					<a href="linuxsystems.html">Linux Systems Programming</a>
+				</li>
+                <li>
+                    <a href="verilog_spi.html">Verilog SPI Master</a>
+                </li>
+                <li>
+                    <a href="homebrew.html">Homebrew Video Games</a>
+                </li>
+				<li>
+					<a href="pwm.html">Pulse Width Modulation IP</a>
+				</li>
+                <li>
+                    <a href="cpld.html">Custom CPLD Dev Board</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+						<h2>Fear Tracker</h2>
+						<h4>A hardware/software package to track how scared a person is</h4>
+						<h4>Source Code Link: <a href="https://github.com/andrade824/Fear-Tracker" target="_blank">https://github.com/andrade824/Fear-Tracker</a></h4>
+						<p>Students at my school during their third year work in teams to build a project over the course of the school year (called a "Junior Project"). My team developed a hardware/software package that lets independent horror content creators (games, movies, etc.) track how scared a person is while experiencing their content. This involves an embedded system (placed on a user&rsquo;s wrist) that grabs heart rate, sweat level, and motion data. This data is then wirelessly transmitted (via Bluetooth) over to a PC that has software (written using the Qt framework) to track the pieces of data in real time as well as to provide methods for analyzing the data afterwards.<br /> </p>
+						
+						<p>This device is marketed towards horror game developers, horror movie makers, and livestreamers (people who stream videos of themselves playing games) of horror games. For content creators (game developers and movie makers) this device would provide a mechanism for quantizing just how scared their viewers are while they play/watch their game/movie. The data that was collected could then be reviewed in the context of gameplay at a later point in time to find out where their content exceeds in being scary and where it fails. This could also be used by livestreamers to show their audience just how scared they actually are while playing a horror game. This can help deepen the immersion an audience member has with the person streaming the video.</p>
+						
+						<p><strong>Wristboard (Embedded System)</strong></p>
+						<ul>
+							<li>Sits on user&rsquo;s wrist and grabs data from three sensors: heart-rate sensor, galvanic skin response sensor (sweat), and an accelerometer (for detecting jump-scares)</li>
+							<li>Utilizes an 8-bit AVR microcontroller for data capture</li>
+							<li>Uses a 32-bit ARM Cortex-M4 microcontroller for processing the data (calculating heart-rate, detecting jump-scares, and measuring sweat).</li>
+							<li>Data is sent wirelessly to PC over a Bluetooth module</li>
+						</ul>
+
+						<p><strong>Stat-Tracking Software (Desktop PC)</strong></p>
+						<ul>
+							<li>Displays all three sensor&rsquo;s data in real-time</li>
+							<li>Provides graphs for each piece of data that can be zoomed in and analyzed at a later time</li>
+							<li>Written in C++ and utilizes the Qt framework for the GUI</li>
+						</ul>
+									
+						<div style="text-align:center" width="800px">
+							<img src="img/feartracker.png" width="700px"/>
+							<p class="text-center">Screenshot of the finished software. Red: heartrate, blue: sweat, green: accelerometer.</p>
+						</div>
+						
+						<div style="text-align:center;margin-top:30px;" width="800px">
+							<img src="img/wristboard.png" width="700px"/>
+							<p class="text-center">The final prototype of the wearable portion of this project. Contains a LiPo battery, microcontroller, and the three sensors.</p>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
