@@ -84,11 +84,11 @@
 
 						This hardware/software package is meant to emulate the type of graphical system found in early video
 						game consoles and to provide users with a base to develop their own video games and arcade hardware.
-						This design is meant to be utilized within modern programmable SoC systems (currently being tested on a
+						This design is meant to be utilized within modern programmable SoC systems (currently tested on a
 						Zynq-7000 SoC development board). The custom IP component contains modules for both
 						creating/modifying framebuffers, as well as a display controller that outputs the framebuffer onto a standard
-						VGA monitor. The Linux software consists of both a custom graphics driver and a user-space library to ease
-						development of applications that utilize the accelerator.</p>
+						VGA monitor. The Linux software consists of a Yocto layer that contains boot files and sample programs, a custom 
+						graphics driver, and a user-space library to ease development of applications that utilize the accelerator.</p>
 
 						<h3>Features</h3>
 						<ul>
@@ -96,13 +96,14 @@
 							<li>Frame creation consists of a sprite engine (similar to Super Nintendo and Gameboy Advance)
 								<ul>
 									<li>640x480 resolution at 16-bit color</li>
-									<li>32 sprites per three sprite layers (96 sprites total)</li>
+									<li>256 sprites displayable at once</li>
 									<li>Separate background layer can either consist of 32x32 pixel tiles or a single static image</li>
 								</ul>
 							</li>
-							<li>Includes custom bitmap DMA (for copying/pasting rectangles within an image)</li>
-							<li>Custom-built Embedded Linux distribution (using the Buildroot automated build system)
+							<li>Includes custom bitmap DMA (for updating framebuffers every frame)</li>
+							<li>Custom-built Embedded Linux distribution (using the Yocto automated build system)
 								<ul>
+									<li>Custom Yocto layer that includes boot files and drivers for the IP included in the reference system (allows for building a kernel, bootloader, and root filesystem very quickly)</li>
 									<li>Linux graphics driver provides user-space with a simple character file that can be used to
 									access graphics memory and send commands to the hardware</li>
 									<li>User-space library abstracts interacting with the driver and provides a simple API for
@@ -136,11 +137,16 @@
 
 						<p>Building a complementary framebuffer driver has also been considered, but at this point, it's a secondary priority.</p>
 
-						<p><b>Linux User-space Library:</b> This C library handles the low-level details of modifying graphics memory and telling the driver what commands to send. In its place, it exposes a simple programming API meant to ease game development. For instance, instead of manually sending ioctls and mmap-ing graphics memory, the user application should be able to call an "update_sprite" function that performs those tasks under the hood.</p>
+						<p><b>Linux User-space Library:</b> This C++ library handles the low-level details of modifying graphics memory and telling the driver what commands to send. In its place, it exposes a simple programming API meant to ease game development. For instance, instead of manually sending ioctls and mmap-ing graphics memory, the user application should be able to call an "UpdateSpriteAttr()" function that performs those tasks under the hood.</p>
 						
 						<div style="text-align:center" width="800px">
 							<img src="img/display_controller.jpg" width="750px" />
 							<p class="text-center">Example graphic shown using the Display Controller portion of this project (code in GitHub link)</p>
+						</div>
+						
+						<div style="text-align:center; margin-top:30px" width="800px">
+							<img src="img/sprites.jpg" width="750px" />
+							<p class="text-center">Test pattern demonstrating the tiled background and displaying all 256 sprites at once</p>
 						</div>
                     </div>
                 </div>
